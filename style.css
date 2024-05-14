@@ -51,34 +51,63 @@ nav a:hover {
     color: #FFD700; /* Gold color on hover */
 }
 .search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 20px 0;
-    display: none;
 }
 .search-bar input {
     padding: 10px;
     font-size: 1em;
-    border-radius: 5px;
+    border-radius: 5px 0 0 5px;
     border: none;
     width: 300px;
     text-align: center;
 }
+.search-bar .left-icon {
+    padding: 10px;
+    background: white;
+    color: black;
+    border-radius: 5px 0 0 5px;
+}
+.search-bar .clear-icon {
+    padding: 10px;
+    background: red;
+    color: white;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    display: none;
+}
+.search-bar button {
+    padding: 10px;
+    font-size: 1em;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+.intro-text {
+    margin: 20px 0;
+    font-size: 1.5em;
+}
+.intro-subtext {
+    margin: 10px 0;
+    font-size: 1em;
+}
 .content-section {
     display: none;
-    padding: 20px;
+    text-align: center;
 }
 .content-section.active {
     display: block;
 }
 .content-section#contact p {
-    font-family: 'Arial', sans-serif;
-    font-size: 1.2em;
-    line-height: 1.6;
+    font-size: 1.5em;
 }
 .content-section#contact a {
-    color: #FFD700; /* Gold color for links */
+    color: white;
+    font-size: 1.5em;
     text-decoration: none;
     position: relative;
-    transition: color 0.3s ease;
 }
 .content-section#contact a:hover {
     text-decoration: underline;
@@ -98,8 +127,14 @@ nav a:hover {
 .hover-text:hover {
     color: transparent;
 }
+.hover-display {
+    display: none;
+    font-size: 0.8em;
+    color: white;
+    margin-top: 5px;
+}
 .profile-pic {
-    width: 150px; /* Adjust width as needed */
+    width: 150px;
     height: auto;
     border-radius: 50%;
     margin-bottom: 20px;

@@ -11,11 +11,22 @@
     <div class="center-content">
         <h1>FunkyBeatz's Platform</h1>
         <div class="search-bar" id="search-bar">
-            <input type="text" placeholder="Search...">
+            <span class="left-icon">🔍</span>
+            <input type="text" id="search-input" placeholder="Search...">
+            <span class="clear-icon" id="clear-icon">✖</span>
+            <button id="search-button">➤</button>
         </div>
+        <p class="intro-text">
+            Hey you!<br>
+            Whatever you need to search for that might be located on my website, search it here to go directly to it
+        </p>
+        <p class="intro-subtext">
+            (Or not)
+        </p>
         <nav>
             <a href="#welcome" onclick="showSection('welcome')">Welcome</a>
             <a href="#story" onclick="showSection('story')">Story</a>
+            <a href="#articles" onclick="showSection('articles')">Articles</a>
             <a href="#contact" onclick="showSection('contact')">Contact</a>
         </nav>
         <div class="content-section" id="welcome">
@@ -29,12 +40,21 @@
             <p>Next to all of the above I am also a kitesurfer, Gamer and Streamer.</p>
             <p>If you need more information or you want to reach out to me please head over to CONTACT</p>
         </div>
+        <div class="content-section" id="articles">
+            <p>Articles will be added here soon.</p>
+        </div>
         <div class="content-section" id="contact">
             <p>
                 <a href="https://twitter.com/FunkyxBeatz" target="_blank" class="hover-text" data-hover="@FunkyxBeatz">𝕏</a>
+                <span class="hover-display" id="hover-display-twitter">@FunkyxBeatz</span>
             </p>
             <p>
                 <a href="https://hub.xyz/funkybeatz" target="_blank" class="hover-text" data-hover="https://hub.xyz/funkybeatz">FunkySide</a>
+                <span class="hover-display" id="hover-display-hub">https://hub.xyz/funkybeatz</span>
+            </p>
+            <p>
+                <a href="https://www.twitch.tv/funkybeatz_/about" target="_blank" class="hover-text" data-hover="https://www.twitch.tv/funkybeatz_/about">Twitch</a>
+                <span class="hover-display" id="hover-display-twitch">https://www.twitch.tv/funkybeatz_/about</span>
             </p>
         </div>
     </div>
@@ -72,7 +92,7 @@
 
             // Show or hide the search bar
             if (sectionId === 'welcome') {
-                document.getElementById('search-bar').style.display = 'block';
+                document.getElementById('search-bar').style.display = 'flex';
             } else {
                 document.getElementById('search-bar').style.display = 'none';
             }
@@ -82,6 +102,53 @@
         showSection('welcome');
 
         animateStars();
+
+        const sections = {
+            welcome: "Welcome to FunkyBeatz's platform!",
+            story: "Hello! My name is FunkyBeatz and I’m an Alphacaller / Early caller in the NFT space...",
+            articles: "Articles will be added here soon.",
+            contact: "𝕏"
+        };
+
+        document.getElementById('search-button').addEventListener('click', function() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            let found = false;
+            for (let section in sections) {
+                if (sections[section].toLowerCase().includes(query)) {
+                    showSection(section);
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                alert("You've lost me");
+            }
+        });
+
+        document.getElementById('clear-icon').addEventListener('click', function() {
+            document.getElementById('search-input').value = '';
+            this.style.display = 'none';
+        });
+
+        document.getElementById('search-input').addEventListener('input', function() {
+            const clearIcon = document.getElementById('clear-icon');
+            if (this.value.length > 0) {
+                clearIcon.style.display = 'block';
+            } else {
+                clearIcon.style.display = 'none';
+            }
+        });
+
+        document.querySelectorAll('.hover-text').forEach(item => {
+            item.addEventListener('mouseover', function() {
+                const hoverDisplay = document.getElementById('hover-display-' + this.getAttribute('data-hover').split('/')[0]);
+                hoverDisplay.style.display = 'block';
+            });
+            item.addEventListener('mouseout', function() {
+                const hoverDisplay = document.getElementById('hover-display-' + this.getAttribute('data-hover').split('/')[0]);
+                hoverDisplay.style.display = 'none';
+            });
+        });
     </script>
 </body>
 </html>
