@@ -98,3 +98,16 @@ nav a:hover {
 .hover-text:hover {
     color: transparent;
 }
+.profile-pic {
+    width: 150px; /* Adjust width as needed */
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+.content-section#story p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
+}
