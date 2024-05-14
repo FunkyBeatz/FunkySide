@@ -16,11 +16,10 @@
             <span class="clear-icon" id="clear-icon">✖</span>
             <button id="search-button">➤</button>
         </div>
-        <p class="intro-text">
-            Hey you!<br>
-            Whatever you need to search for that might be located on my website, search it here to go directly to it
+        <p class="intro-text" id="intro-text">
+            Searching for something? Find it here!
         </p>
-        <p class="intro-subtext">
+        <p class="intro-subtext" id="intro-subtext">
             (Or not)
         </p>
         <nav>
@@ -30,7 +29,6 @@
             <a href="#contact" onclick="showSection('contact')">Contact</a>
         </nav>
         <div class="content-section" id="welcome">
-            <p>Welcome to FunkyBeatz's platform!</p>
         </div>
         <div class="content-section" id="story">
             <img src="new pfp vector.png" alt="FunkyBeatz's Profile Picture" class="profile-pic">
@@ -41,12 +39,12 @@
             <p>If you need more information or you want to reach out to me please head over to CONTACT</p>
         </div>
         <div class="content-section" id="articles">
-            <p>Articles will be added here soon.</p>
+            <p class="coming-soon">COMING SOON</p>
         </div>
         <div class="content-section" id="contact">
             <p>
-                <a href="https://twitter.com/FunkyxBeatz" target="_blank" class="hover-text" data-hover="@FunkyxBeatz">𝕏</a>
-                <span class="hover-display" id="hover-display-twitter">@FunkyxBeatz</span>
+                <a href="https://twitter.com/FunkyxBeatz" target="_blank" class="hover-text" data-hover="https://twitter.com/FunkyxBeatz">𝕏</a>
+                <span class="hover-display" id="hover-display-twitter">https://twitter.com/FunkyxBeatz</span>
             </p>
             <p>
                 <a href="https://hub.xyz/funkybeatz" target="_blank" class="hover-text" data-hover="https://hub.xyz/funkybeatz">FunkySide</a>
@@ -93,8 +91,12 @@
             // Show or hide the search bar
             if (sectionId === 'welcome') {
                 document.getElementById('search-bar').style.display = 'flex';
+                document.getElementById('intro-text').style.display = 'block';
+                document.getElementById('intro-subtext').style.display = 'block';
             } else {
                 document.getElementById('search-bar').style.display = 'none';
+                document.getElementById('intro-text').style.display = 'none';
+                document.getElementById('intro-subtext').style.display = 'none';
             }
         }
 
@@ -104,9 +106,9 @@
         animateStars();
 
         const sections = {
-            welcome: "Welcome to FunkyBeatz's platform!",
+            welcome: "Searching for something? Find it here!",
             story: "Hello! My name is FunkyBeatz and I’m an Alphacaller / Early caller in the NFT space...",
-            articles: "Articles will be added here soon.",
+            articles: "COMING SOON",
             contact: "𝕏"
         };
 
@@ -141,11 +143,11 @@
 
         document.querySelectorAll('.hover-text').forEach(item => {
             item.addEventListener('mouseover', function() {
-                const hoverDisplay = document.getElementById('hover-display-' + this.getAttribute('data-hover').split('/')[0]);
+                const hoverDisplay = this.nextElementSibling;
                 hoverDisplay.style.display = 'block';
             });
             item.addEventListener('mouseout', function() {
-                const hoverDisplay = document.getElementById('hover-display-' + this.getAttribute('data-hover').split('/')[0]);
+                const hoverDisplay = this.nextElementSibling;
                 hoverDisplay.style.display = 'none';
             });
         });

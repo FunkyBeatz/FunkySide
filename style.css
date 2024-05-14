@@ -55,20 +55,21 @@ nav a:hover {
     align-items: center;
     justify-content: center;
     margin: 20px 0;
+    background-color: white;
+    border-radius: 5px;
 }
 .search-bar input {
     padding: 10px;
     font-size: 1em;
-    border-radius: 5px 0 0 5px;
     border: none;
     width: 300px;
-    text-align: center;
+    text-align: left;
+    border-radius: 5px 0 0 5px;
 }
 .search-bar .left-icon {
     padding: 10px;
     background: white;
     color: black;
-    border-radius: 5px 0 0 5px;
 }
 .search-bar .clear-icon {
     padding: 10px;
@@ -84,6 +85,8 @@ nav a:hover {
     border: none;
     border-radius: 0 5px 5px 0;
     cursor: pointer;
+    background-color: #FFD700; /* Gold color */
+    color: black;
 }
 .intro-text {
     margin: 20px 0;
@@ -104,8 +107,8 @@ nav a:hover {
     font-size: 1.5em;
 }
 .content-section#contact a {
-    color: white;
-    font-size: 1.5em;
+    color: yellow;
+    font-size: 1.2em;
     text-decoration: none;
     position: relative;
 }
@@ -120,18 +123,14 @@ nav a:hover {
     opacity: 0;
     transition: opacity 0.3s ease;
     color: white;
+    font-size: 0.8em;
+    margin-top: 5px;
 }
 .hover-text:hover::before {
     opacity: 1;
 }
 .hover-text:hover {
     color: transparent;
-}
-.hover-display {
-    display: none;
-    font-size: 0.8em;
-    color: white;
-    margin-top: 5px;
 }
 .profile-pic {
     width: 150px;
@@ -145,4 +144,8 @@ nav a:hover {
     text-align: left;
     max-width: 800px;
     margin: 0 auto;
+}
+.coming-soon {
+    font-size: 2em;
+    font-weight: bold;
 }
