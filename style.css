@@ -77,7 +77,24 @@ nav a:hover {
 .content-section#contact a {
     color: #FFD700; /* Gold color for links */
     text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
 }
 .content-section#contact a:hover {
     text-decoration: underline;
+}
+.hover-text::before {
+    content: attr(data-hover);
+    position: absolute;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: white;
+}
+.hover-text:hover::before {
+    opacity: 1;
+}
+.hover-text:hover {
+    color: transparent;
 }
