@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FunkyBeatz's Platform</title>
+    <title>FunkySide</title>
     <meta name="description" content="Welcome to FunkyBeatz's platform, your source for NFT calls, tech news, and more.">
     <meta name="keywords" content="FunkyBeatz, NFT, tech news, kitesurfing, gaming, streaming">
     <link rel="stylesheet" href="style.css">
@@ -12,12 +12,14 @@
     <div id="stars"></div>
     <div class="center-content">
         <h1>FunkyBeatz's Platform</h1>
-        <nav>
-            <a href="#welcome" id="nav-welcome" onclick="showSection('welcome')">Welcome</a>
-            <a href="#story" id="nav-story" onclick="showSection('story')">Story</a>
-            <a href="#articles" id="nav-articles" onclick="showSection('articles')">Articles</a>
-            <a href="#contact" id="nav-contact" onclick="showSection('contact')">Contact</a>
-        </nav>
+        <div class="content-section" id="welcome">
+            <nav>
+                <a href="#welcome" id="nav-welcome" onclick="showSection('welcome')">Welcome</a>
+                <a href="#story" id="nav-story" onclick="showSection('story')">Story</a>
+                <a href="#articles" id="nav-articles" onclick="showSection('articles')">Articles</a>
+                <a href="#contact" id="nav-contact" onclick="showSection('contact')">Contact</a>
+            </nav>
+        </div>
         <div class="search-bar" id="search-bar">
             <span class="left-icon">🔍</span>
             <input type="text" id="search-input" placeholder="Search..." onkeypress="handleKeyPress(event)">
@@ -29,8 +31,6 @@
         <p class="intro-subtext" id="intro-subtext">
             (Or not)
         </p>
-        <div class="content-section" id="welcome">
-        </div>
         <div class="content-section" id="story">
             <img src="new pfp vector.png" alt="FunkyBeatz's Profile Picture" class="profile-pic">
             <p>Hello!</p>
@@ -56,6 +56,9 @@
                 <span class="hover-display" id="hover-display-twitch">https://www.twitch.tv/funkybeatz_/about</span>
             </p>
         </div>
+        <footer>
+            <p>© 2069 Funky. All Beatz Reserved</p>
+        </footer>
     </div>
 
     <script>

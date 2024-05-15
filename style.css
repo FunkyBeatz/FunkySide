@@ -1,20 +1,21 @@
-/* style.css */
-
+/* Ensure the starry background covers the entire page */
 body, html {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #000;
-    color: #fff;
-    overflow-x: hidden;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: black; /* Ensures background is black even if stars don't cover */
 }
 
 #stars {
-    position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    background: black;
     z-index: -1;
-    overflow: hidden;
 }
 
 .star {
@@ -23,17 +24,23 @@ body, html {
     height: 2px;
     background: white;
     border-radius: 50%;
-    animation: twinkle 5s infinite;
-}
-
-@keyframes twinkle {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 1; }
 }
 
 .center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    margin-top: 50px;
+    min-height: 100vh;
+    z-index: 1;
+    position: relative;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin: 20px 0;
+    color: white;
 }
 
 nav {
@@ -41,82 +48,85 @@ nav {
 }
 
 nav a {
-    color: #fff;
-    margin: 0 15px;
+    color: white;
     text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.2em;
 }
 
-nav a:hover,
-nav a:focus,
-nav a:active {
-    text-decoration: underline;
+nav a:hover {
+    color: yellow;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 20px;
+    padding: 5px 10px;
+    margin: 20px 0;
+}
+
+.search-bar .left-icon {
+    margin-right: 10px;
+}
+
+#search-input {
+    border: none;
+    outline: none;
+    width: 200px;
+    font-size: 1em;
+}
+
+.clear-icon {
+    cursor: pointer;
+    display: none;
+    margin-left: 10px;
+}
+
+.intro-text, .intro-subtext {
+    color: white;
+    margin: 10px 0;
 }
 
 .content-section {
     display: none;
-    margin: 20px;
+    padding: 20px;
+    color: white;
 }
 
 .content-section.active {
     display: block;
 }
 
-.search-bar {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-}
-
-#search-input {
-    padding: 5px;
-    margin: 0 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-.clear-icon {
-    cursor: pointer;
-    display: none;
-    align-self: center; /* Center the clear icon vertically */
-}
-
 .profile-pic {
     width: 150px;
     height: 150px;
     border-radius: 50%;
+    margin: 20px 0;
+}
+
+.coming-soon {
+    font-size: 2em;
+}
+
+.hover-text {
+    color: white;
+    text-decoration: none;
 }
 
 .hover-display {
     display: none;
-    font-size: 0.8em;
-    color: #ccc;
-}
-
-/* Responsive Design */
-
-@media (max-width: 768px) {
-    .center-content {
-        margin-top: 20px;
-        padding: 0 10px;
-    }
-    
-    .profile-pic {
-        width: 100px;
-        height: 100px;
-    }
-
-    nav a {
-        display: block;
-        margin: 10px 0;
-    }
-}
-
-/* Highlight active section */
-nav a[style*="color: yellow;"] {
     color: yellow;
+    margin-left: 10px;
 }
 
-/* Contact page font size */
-#contact p {
-    font-size: 1.2em; /* Slightly larger font size */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: white;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
 }
