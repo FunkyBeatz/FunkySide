@@ -12,11 +12,16 @@
     <div id="stars"></div>
     <div class="center-content">
         <h1>FunkyBeatz's Platform</h1>
+        <nav>
+            <a href="#welcome" id="nav-welcome" onclick="showSection('welcome')">Welcome</a>
+            <a href="#story" id="nav-story" onclick="showSection('story')">Story</a>
+            <a href="#articles" id="nav-articles" onclick="showSection('articles')">Articles</a>
+            <a href="#contact" id="nav-contact" onclick="showSection('contact')">Contact</a>
+        </nav>
         <div class="search-bar" id="search-bar">
             <span class="left-icon">🔍</span>
-            <input type="text" id="search-input" placeholder="Search...">
+            <input type="text" id="search-input" placeholder="Search..." onkeypress="handleKeyPress(event)">
             <span class="clear-icon" id="clear-icon">✖</span>
-            <button id="search-button">➤</button>
         </div>
         <p class="intro-text" id="intro-text">
             Searching for something? Find it here!
@@ -24,12 +29,6 @@
         <p class="intro-subtext" id="intro-subtext">
             (Or not)
         </p>
-        <nav>
-            <a href="#welcome" onclick="showSection('welcome')">Welcome</a>
-            <a href="#story" onclick="showSection('story')">Story</a>
-            <a href="#articles" onclick="showSection('articles')">Articles</a>
-            <a href="#contact" onclick="showSection('contact')">Contact</a>
-        </nav>
         <div class="content-section" id="welcome">
         </div>
         <div class="content-section" id="story">
@@ -90,6 +89,12 @@
             });
             document.getElementById(sectionId).classList.add('active');
 
+            // Highlight the active category
+            document.querySelectorAll('nav a').forEach(navLink => {
+                navLink.style.color = '';
+            });
+            document.getElementById('nav-' + sectionId).style.color = 'yellow';
+
             // Show or hide the search bar
             if (sectionId === 'welcome') {
                 document.getElementById('search-bar').style.display = 'flex';
@@ -114,20 +119,22 @@
             contact: "𝕏"
         };
 
-        document.getElementById('search-button').addEventListener('click', function() {
-            const query = document.getElementById('search-input').value.toLowerCase();
-            let found = false;
-            for (let section in sections) {
-                if (sections[section].toLowerCase().includes(query)) {
-                    showSection(section);
-                    found = true;
-                    break;
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                const query = document.getElementById('search-input').value.toLowerCase();
+                let found = false;
+                for (let section in sections) {
+                    if (sections[section].toLowerCase().includes(query)) {
+                        showSection(section);
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    alert("You've lost me");
                 }
             }
-            if (!found) {
-                alert("You've lost me");
-            }
-        });
+        }
 
         document.getElementById('clear-icon').addEventListener('click', function() {
             document.getElementById('search-input').value = '';
