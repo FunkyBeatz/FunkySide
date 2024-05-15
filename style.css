@@ -1,151 +1,105 @@
+/* style.css */
+
 body, html {
     margin: 0;
     padding: 0;
-    height: 100%;
-    overflow: hidden;
-    font-family: 'Arial', sans-serif;
-    color: white;
-    background: black;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    overflow-x: hidden;
 }
+
 #stars {
     position: absolute;
     width: 100%;
     height: 100%;
     z-index: -1;
-    background: transparent;
     overflow: hidden;
 }
+
 .star {
     position: absolute;
     width: 2px;
     height: 2px;
     background: white;
     border-radius: 50%;
-    box-shadow: 0 0 3px white;
+    animation: twinkle 5s infinite;
 }
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
 .center-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
     text-align: center;
+    margin-top: 50px;
 }
-h1 {
-    margin: 0;
-    padding: 20px;
-    font-size: 2.5em;
-}
-nav {
-    margin: 20px 0;
-}
+
 nav a {
-    color: white;
+    color: #fff;
     margin: 0 15px;
     text-decoration: none;
-    font-weight: bold;
-    font-size: 1.2em;
-    transition: color 0.3s ease;
 }
+
 nav a:hover {
-    color: #FFD700; /* Gold color on hover */
+    text-decoration: underline;
 }
-.search-bar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 20px 0;
-    background-color: white;
-    border-radius: 5px;
-}
-.search-bar input {
-    padding: 10px;
-    font-size: 1em;
-    border: none;
-    width: 300px;
-    text-align: left;
-    border-radius: 5px 0 0 5px;
-}
-.search-bar .left-icon {
-    padding: 10px;
-    background: white;
-    color: black;
-}
-.search-bar .clear-icon {
-    padding: 10px;
-    background: red;
-    color: white;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-    display: none;
-}
-.search-bar button {
-    padding: 10px;
-    font-size: 1em;
-    border: none;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-    background-color: #FFD700; /* Gold color */
-    color: black;
-}
-.intro-text {
-    margin: 20px 0;
-    font-size: 1.5em;
-}
-.intro-subtext {
-    margin: 10px 0;
-    font-size: 1em;
-}
+
 .content-section {
     display: none;
-    text-align: center;
+    margin: 20px;
 }
+
 .content-section.active {
     display: block;
 }
-.content-section#contact p {
-    font-size: 1.5em;
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
-.content-section#contact a {
-    color: yellow;
-    font-size: 1.2em;
-    text-decoration: none;
-    position: relative;
+
+#search-input {
+    padding: 5px;
+    margin: 0 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
-.content-section#contact a:hover {
-    text-decoration: underline;
+
+.clear-icon {
+    cursor: pointer;
+    display: none;
 }
-.hover-text::before {
-    content: attr(data-hover);
-    position: absolute;
-    left: 0;
-    right: 0;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    color: white;
-    font-size: 0.8em;
-    margin-top: 5px;
-}
-.hover-text:hover::before {
-    opacity: 1;
-}
-.hover-text:hover {
-    color: transparent;
-}
+
 .profile-pic {
     width: 150px;
-    height: auto;
+    height: 150px;
     border-radius: 50%;
-    margin-bottom: 20px;
 }
-.content-section#story p {
-    font-size: 1.2em;
-    line-height: 1.6;
-    text-align: left;
-    max-width: 800px;
-    margin: 0 auto;
+
+.hover-display {
+    display: none;
+    font-size: 0.8em;
+    color: #ccc;
 }
-.coming-soon {
-    font-size: 2em;
-    font-weight: bold;
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+    .center-content {
+        margin-top: 20px;
+        padding: 0 10px;
+    }
+    
+    .profile-pic {
+        width: 100px;
+        height: 100px;
+    }
+
+    nav a {
+        display: block;
+        margin: 10px 0;
+    }
 }
