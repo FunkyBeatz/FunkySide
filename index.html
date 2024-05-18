@@ -28,7 +28,9 @@
         <p class="intro-subtext" id="intro-subtext">
             (Or not)
         </p>
-        <div class="content-section" id="welcome"></div>
+        <div class="content-section" id="welcome">
+            <p>Welcome to the platform. Explore various sections to learn more about what we offer.</p>
+        </div>
         <div class="content-section" id="story">
             <img src="new pfp vector.png" alt="FunkyBeatz's Profile Picture" class="profile-pic">
             <p>Hello!</p>
@@ -88,7 +90,7 @@
         showSection('welcome');
 
         const sections = {
-            welcome: "Searching for something? Find it here!",
+            welcome: "Welcome to the platform. Explore various sections to learn more about what we offer.",
             story: "Hello! My name is FunkyBeatz and I’m an Alphacaller / Early caller in the NFT space...",
             articles: "COMING SOON",
             contact: "𝕏"
@@ -101,6 +103,7 @@
                 for (let section in sections) {
                     if (sections[section].toLowerCase().includes(query)) {
                         showSection(section);
+                        highlightText(section, query);
                         found = true;
                         break;
                     }
@@ -108,6 +111,19 @@
                 if (!found) {
                     alert("You've lost me");
                 }
+            }
+        }
+
+        function highlightText(sectionId, query) {
+            const section = document.getElementById(sectionId);
+            const text = section.innerHTML;
+            const regex = new RegExp(query, 'gi');
+            const highlighted = text.replace(regex, match => `<span class="highlight">${match}</span>`);
+            section.innerHTML = highlighted;
+            // Scroll to the first occurrence of the highlighted text
+            const firstMatch = section.querySelector('.highlight');
+            if (firstMatch) {
+                firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         }
 

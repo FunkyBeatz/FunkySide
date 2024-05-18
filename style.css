@@ -132,6 +132,11 @@ footer {
     background: rgba(0, 0, 0, 0.5);
 }
 
+.highlight {
+    background-color: yellow;
+    color: black;
+}
+
 @media (max-width: 600px) {
     h1 {
         font-size: 1.8em; /* Adjust font size for mobile */
