@@ -137,6 +137,36 @@ footer {
     color: black;
 }
 
+.article-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.article-block {
+    background: white;
+    color: black;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.article-block h2 {
+    margin: 0 0 10px;
+}
+
+.article-block h2 a {
+    text-decoration: none;
+    color: #090979;
+}
+
+.article-block h2 a:hover {
+    text-decoration: underline;
+}
+
 @media (max-width: 600px) {
     h1 {
         font-size: 1.8em; /* Adjust font size for mobile */

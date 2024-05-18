@@ -40,7 +40,7 @@
             <p>If you need more information or you want to reach out to me please head over to CONTACT</p>
         </div>
         <div class="content-section" id="articles">
-            <p class="coming-soon">COMING SOON</p>
+            <div id="medium-articles" class="article-container"></div>
         </div>
         <div class="content-section" id="contact">
             <p>
@@ -151,6 +151,25 @@
                 hoverDisplay.style.display = 'none';
             });
         });
+
+        // Fetch and display Medium articles
+        async function fetchMediumArticles() {
+            const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@FunkyBeatz');
+            const data = await response.json();
+            const articlesContainer = document.getElementById('medium-articles');
+            data.items.forEach(item => {
+                const articleBlock = document.createElement('div');
+                articleBlock.className = 'article-block';
+                articleBlock.innerHTML = `
+                    <h2><a href="${item.link}" target="_blank">${item.title}</a></h2>
+                    <p>${item.pubDate}</p>
+                    <p>${item.contentSnippet}</p>
+                `;
+                articlesContainer.appendChild(articleBlock);
+            });
+        }
+
+        fetchMediumArticles();
     </script>
 </body>
 </html>
