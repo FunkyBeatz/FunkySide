@@ -1,132 +1,167 @@
-/* Ensure the starry background covers the entire page */
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    background-color: black; /* Ensures background is black even if stars don't cover */
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FunkySide</title>
+    <meta name="description" content="Welcome to FunkyBeatz's platform, your source for NFT calls, tech news, and more.">
+    <meta name="keywords" content="FunkyBeatz, NFT, tech news, kitesurfing, gaming, streaming">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="stars"></div>
+    <div class="center-content">
+        <h1>FunkySide</h1>
+        <nav>
+            <a href="#welcome" id="nav-welcome" onclick="showSection('welcome')">Welcome</a>
+            <a href="#story" id="nav-story" onclick="showSection('story')">Story</a>
+            <a href="#articles" id="nav-articles" onclick="showSection('articles')">Articles</a>
+            <a href="#contact" id="nav-contact" onclick="showSection('contact')">Contact</a>
+        </nav>
+        <div class="search-bar" id="search-bar">
+            <span class="left-icon">🔍</span>
+            <input type="text" id="search-input" placeholder="Search..." onkeypress="handleKeyPress(event)">
+            <span class="clear-icon" id="clear-icon">✖</span>
+        </div>
+        <p class="intro-text" id="intro-text">
+            Searching for something? Find it here!
+        </p>
+        <p class="intro-subtext" id="intro-subtext">
+            (Or not)
+        </p>
+        <div class="content-section" id="welcome"></div>
+        <div class="content-section" id="story">
+            <img src="new pfp vector.png" alt="FunkyBeatz's Profile Picture" class="profile-pic">
+            <p>Hello!</p>
+            <p>My name is FunkyBeatz and I’m an Alphacaller / Early caller in the NFT space, but I also like to call free AI tools and other Tech news.</p>
+            <p>Here is where I start my journey. First of all I'd like to give you all more to read, keep you up-to-date on what’s to come. Also to bundle my calls/posts together on a more professional way then gathering Tweets on my Hub page.</p>
+            <p>Next to all of the above I am also a kitesurfer, Gamer and Streamer.</p>
+            <p>If you need more information or you want to reach out to me please head over to CONTACT</p>
+        </div>
+        <div class="content-section" id="articles">
+            <p class="coming-soon">COMING SOON</p>
+        </div>
+        <div class="content-section" id="contact">
+            <p>
+                <a href="https://twitter.com/FunkyxBeatz" target="_blank" class="hover-text" data-hover="https://twitter.com/FunkyxBeatz">𝕏</a>
+                <span class="hover-display" id="hover-display-twitter">https://twitter.com/FunkyxBeatz</span>
+            </p>
+            <p>
+                <a href="https://hub.xyz/funkybeatz" target="_blank" class="hover-text" data-hover="https://hub.xyz/funkybeatz">FunkySide</a>
+                <span class="hover-display" id="hover-display-hub">https://hub.xyz/funkybeatz</span>
+            </p>
+            <p>
+                <a href="https://www.twitch.tv/funkybeatz_/about" target="_blank" class="hover-text" data-hover="https://www.twitch.tv/funkybeatz_/about">Twitch</a>
+                <span class="hover-display" id="hover-display-twitch">https://www.twitch.tv/funkybeatz_/about</span>
+            </p>
+        </div>
+        <footer>
+            <p>© 2069 Funky. All Beatz Reserved</p>
+        </footer>
+    </div>
 
-#stars {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: black;
-    z-index: -1;
-}
+    <script>
+        const starCount = 100;
+        const starsContainer = document.getElementById('stars');
 
-.star {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: white;
-    border-radius: 50%;
-}
+        for (let i = 0; i < starCount; i++) {
+            let star = document.createElement('div');
+            star.className = 'star';
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.left = `${Math.random() * 100}%`;
+            starsContainer.appendChild(star);
+        }
 
-.center-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    text-align: center;
-    min-height: 100vh;
-    z-index: 1;
-    position: relative;
-}
+        function animateStars() {
+            const stars = document.querySelectorAll('.star');
+            stars.forEach(star => {
+                let top = parseFloat(star.style.top);
+                top += 0.1;
+                if (top > 100) {
+                    top = 0;
+                }
+                star.style.top = `${top}%`;
+            });
+            requestAnimationFrame(animateStars);
+        }
 
-h1 {
-    font-size: 2.5em;
-    margin: 20px 0;
-    color: white;
-}
+        animateStars();
 
-nav {
-    margin: 20px 0;
-}
+        function showSection(sectionId) {
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
 
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 1.2em;
-}
+            // Highlight the active category
+            document.querySelectorAll('nav a').forEach(navLink => {
+                navLink.style.color = '';
+            });
+            document.getElementById('nav-' + sectionId).style.color = 'yellow';
 
-nav a:hover {
-    color: yellow;
-}
+            // Show or hide the search bar
+            if (sectionId === 'welcome') {
+                document.getElementById('search-bar').style.display = 'flex';
+                document.getElementById('intro-text').style.display = 'block';
+                document.getElementById('intro-subtext').style.display = 'block';
+            } else {
+                document.getElementById('search-bar').style.display = 'none';
+                document.getElementById('intro-text').style.display = 'none';
+                document.getElementById('intro-subtext').style.display = 'none';
+            }
+        }
 
-.search-bar {
-    display: flex;
-    align-items: center;
-    background: white;
-    border-radius: 20px;
-    padding: 5px 10px;
-    margin: 20px 0;
-}
+        // Show the welcome section by default
+        showSection('welcome');
 
-.search-bar .left-icon {
-    margin-right: 10px;
-}
+        const sections = {
+            welcome: "Searching for something? Find it here!",
+            story: "Hello! My name is FunkyBeatz and I’m an Alphacaller / Early caller in the NFT space...",
+            articles: "COMING SOON",
+            contact: "𝕏"
+        };
 
-#search-input {
-    border: none;
-    outline: none;
-    width: 200px;
-    font-size: 1em;
-}
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                const query = document.getElementById('search-input').value.toLowerCase();
+                let found = false;
+                for (let section in sections) {
+                    if (sections[section].toLowerCase().includes(query)) {
+                        showSection(section);
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    alert("You've lost me");
+                }
+            }
+        }
 
-.clear-icon {
-    cursor: pointer;
-    display: none;
-    margin-left: 10px;
-}
+        document.getElementById('clear-icon').addEventListener('click', function() {
+            document.getElementById('search-input').value = '';
+            this.style.display = 'none';
+        });
 
-.intro-text, .intro-subtext {
-    color: white;
-    margin: 10px 0;
-}
+        document.getElementById('search-input').addEventListener('input', function() {
+            const clearIcon = document.getElementById('clear-icon');
+            if (this.value.length > 0) {
+                clearIcon.style.display = 'block';
+            } else {
+                clearIcon.style.display = 'none';
+            }
+        });
 
-.content-section {
-    display: none;
-    padding: 20px;
-    color: white;
-}
-
-.content-section.active {
-    display: block;
-}
-
-.profile-pic {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin: 20px 0;
-}
-
-.coming-soon {
-    font-size: 2em;
-}
-
-.hover-text {
-    color: white;
-    text-decoration: none;
-}
-
-.hover-display {
-    display: none;
-    color: yellow;
-    margin-left: 10px;
-}
-
-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    color: white;
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.5);
-}
+        document.querySelectorAll('.hover-text').forEach(item => {
+            item.addEventListener('mouseover', function() {
+                const hoverDisplay = this.nextElementSibling;
+                hoverDisplay.style.display = 'block';
+            });
+            item.addEventListener('mouseout', function() {
+                const hoverDisplay = this.nextElementSibling;
+                hoverDisplay.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
