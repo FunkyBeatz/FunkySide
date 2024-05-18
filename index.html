@@ -161,12 +161,46 @@
                 const articleBlock = document.createElement('div');
                 articleBlock.className = 'article-block';
                 articleBlock.innerHTML = `
-                    <h2><a href="${item.link}" target="_blank">${item.title}</a></h2>
-                    <p>${item.pubDate}</p>
-                    <p>${item.contentSnippet}</p>
+                    <div class="article-image">
+                        <img src="${item.thumbnail}" alt="${item.title}">
+                    </div>
+                    <div class="article-content">
+                        <h2><a href="${item.link}" target="_blank">${item.title}</a></h2>
+                        <p class="article-date">${new Date(item.pubDate).toLocaleDateString()}</p>
+                        <p>${item.contentSnippet}</p>
+                    </div>
                 `;
                 articlesContainer.appendChild(articleBlock);
             });
+
+            // Initialize the scrolling functionality
+            initializeScrolling();
+        }
+
+        function initializeScrolling() {
+            const container = document.querySelector('.article-container');
+            const articles = document.querySelectorAll('.article-block');
+            let scrollAmount = 0;
+
+            function scrollArticles() {
+                container.scrollBy({
+                    top: 0,
+                    left: 300,
+                    behavior: 'smooth'
+                });
+                scrollAmount += 300;
+
+                if (scrollAmount >= container.scrollWidth - container.clientWidth) {
+                    scrollAmount = 0;
+                    container.scrollTo({
+                        top: 0,
+                        left: 0,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+
+            setInterval(scrollArticles, 3000); // Adjust the interval as needed
         }
 
         fetchMediumArticles();
