@@ -167,7 +167,7 @@
                     <div class="article-content">
                         <h2><a href="${item.link}" target="_blank">${item.title}</a></h2>
                         <p class="article-date">${new Date(item.pubDate).toLocaleDateString()}</p>
-                        <p>${item.contentSnippet}</p>
+                        <p>${item.contentSnippet || ''}</p>
                     </div>
                 `;
                 articlesContainer.appendChild(articleBlock);
@@ -184,13 +184,13 @@
 
             function scrollArticles() {
                 container.scrollBy({
-                    top: 0,
-                    left: 300,
+                    top: 200,
+                    left: 0,
                     behavior: 'smooth'
                 });
-                scrollAmount += 300;
+                scrollAmount += 200;
 
-                if (scrollAmount >= container.scrollWidth - container.clientWidth) {
+                if (scrollAmount >= container.scrollHeight - container.clientHeight) {
                     scrollAmount = 0;
                     container.scrollTo({
                         top: 0,
@@ -200,7 +200,7 @@
                 }
             }
 
-            setInterval(scrollArticles, 3000); // Adjust the interval as needed
+            setInterval(scrollArticles, 4000); // Adjust the interval as needed
         }
 
         fetchMediumArticles();
