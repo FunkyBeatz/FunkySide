@@ -34,8 +34,8 @@ Stay tuned for the next version!
 ---
 
 ## 🔗 Connect with Me
--  𝕏  [Twitter](https://twitter.com/FunkyxBeatz)
-- 🎮  [Twitch](https://www.twitch.tv/FunkySide)
+-  𝕏 [Twitter](https://twitter.com/FunkyxBeatz)
+- 🎮 [Twitch](https://www.twitch.tv/funkybeatz_)
 
 ---
 
